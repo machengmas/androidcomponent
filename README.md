@@ -16,4 +16,4 @@ checkUpdateParams.put("appKey", ApkUtils.getAppPackageName(context));<br>
 		"updateDate" : "2017-12-31"
 	}
 }<br>
-Android5.0及以上支持在无线网络下无感知下载最新的apk
+Android5.0及以上支持在无线网络下自动下载最新的apk
