@@ -1,7 +1,7 @@
 # AndroidComponent
 Android公用组件<br>
 （1）appupgrade(app升级组件)<br>
-检测更新接口：<br>
+检测更新接口格式:<br>
 请求参数(键值对的形式):<br>
 checkUpdateParams.put("appKey", ApkUtils.getAppPackageName(context));<br>
 返回值要求的格式(json):<br>
