@@ -3,7 +3,7 @@ AndroidComponent
 Download
 --------
 
-Download [the latest JAR][3] or grab via Maven: 
+Download [the latest JAR][3] or grab via Maven: <br>
 Step 1. Add the JitPack repository to your build file
 ```xml
 <repositories>
@@ -21,10 +21,9 @@ Step 2. Add the dependency
     <version>1.0-beta1</version>
 </dependency>
 ```
-or Gradle:
-Step 1. Add the JitPack repository to your build file
+or Gradle:<br>
+Step 1. Add the JitPack repository to your build file<br>
 Add it in your root build.gradle at the end of repositories:
-	allprojects {
 ```groovy
 allprojects {
     repositories {
