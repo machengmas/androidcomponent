@@ -16,4 +16,18 @@ checkUpdateParams.put("appKey", ApkUtils.getAppPackageName(context));<br>
 		"updateDate" : "2017-12-31"
 	}
 }<br>
-Android5.0及以上支持在无线网络下自动下载最新的apk
+Android5.0及以上支持在无线网络下自动下载最新的apk<br>
+gradle引入方式：<br>
+Step 1. Add the JitPack repository to your build file<br>
+Add it in your root build.gradle at the end of repositories:<br>
+allprojects {<br>
+	repositories {<br>
+		...<br>
+		maven { url 'https://jitpack.io' }<br>
+	}<br>
+}<br>
+Step 2. Add the dependency<br>
+dependencies {<br>
+	compile 'com.github.machengmas:androidcomponent:1.0-beta1'<br>
+}
+
