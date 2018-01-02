@@ -3,7 +3,7 @@ AndroidComponent
 Download
 --------
 
-Download [the latest JAR][3] or grab via Maven:
+Download [the latest JAR][3] or grab via Maven: 
 Step 1. Add the JitPack repository to your build file
 ```xml
 <repositories>
