@@ -1,0 +1,113 @@
+@startuml
+
+interface UpgradeCallback
+interface Upgrade
+interface OnUpgradeListener
+interface Download
+interface OnDownloadListener
+interface Install
+interface OnUpgradeDialogClickListener
+class UpgradImp
+class DownloadImp
+class InstallImp
+class UpgradeDialog
+class UpgradeService
+class JobServiceImp
+class AppUpgradeInfo
+class AppUpgradeExecutor
+class WrappedUpgradeCallback
+
+interface UpgradeCallback{
+    void afterUpgrade(boolean success)
+    void onProgressUpgrade(int progressPercentage)
+    void cancel()
+}
+interface Upgrade{
+    void checkUpdate(String checkUpgradeUrl, OnUpgradeListener onUpgradeListener)
+    void update(AppUpgradeInfo appUpgradeInfo, OnUpgradeListener onUpgradeListener)
+}
+interface OnUpgradeListener{
+    void afterCheckUpdate(boolean hasNewVersion, AppUpgradeInfo appUpgradeInfo)
+    void afterUpgrade(boolean success)
+    void onProgressUpgrade(int progressPercentage)
+}
+interface Download{
+    void download(AppUpgradeInfo appUpgradeInfo, OnDownloadListener onDownloadListener)
+}
+interface OnDownloadListener{
+    void afterDownload(boolean isSuccess,String locaSavePath)
+    void onProgressDownload(int progressPercentage)
+}
+interface Install{
+    void install(String localSavePath)
+}
+interface OnUpgradeDialogClickListener{
+    void clickUpgrade();
+    void clickcancel();
+}
+class AppUpgradeExecutor{
+    -WrappedUpgradeCallback wrappedUpgradeCallback
+    +void executor(String checkUpgradeUrl)
+}
+class UpgradImp{
+    -Download download
+    -Install install
+    -AppUpgradeInfo appUpgradeInfo
+    -OnUpgradeListener onUpgradeListener
+}
+class DownloadImp{
+    -OnDownloadListener onDownloadListener
+}
+class InstallImp{
+}
+class UpgradeDialog{
+    -AppUpgradeInfo appUpgradeInfo
+    -OnUpgradeDialogClickListener onUpgradeDialogClickListener
+}
+class UpgradeService{
+    -Upgrade upgrade
+    -UpgradeCallback upgradeCallback
+    +void setUpgradeCallback(UpgradeCallback upgradeCallback)
+}
+class JobServiceImp{
+    -Upgrade upgrade
+}
+class AppUpgradeInfo{
+    -int latestVersionCode;
+    -String latestVersionName;
+    -String downloadUrl;
+    -String minOSVersion;
+    -int size;
+    +int getLatestVersionCode()
+    +void setLatestVersionCode(int latestVersionCode)
+    +String getLatestVersionName()
+    +void setLatestVersionName(String latestVersionName)
+    +String getDownloadUrl()
+    +void setDownloadUrl(String downloadUrl)
+    +String getMinOSVersion()
+    +void setMinOSVersion(String minOSVersion)
+    +int getSize()
+    +void setSize(int size)
+}
+AppUpgradeExecutor o--> WrappedUpgradeCallback
+AppUpgradeExecutor ..> UpgradeService
+AppUpgradeExecutor ..> JobServiceImp
+WrappedUpgradeCallback ..|> UpgradeCallback
+WrappedUpgradeCallback o--> UpgradeCallback
+UpgradeService *--> Upgrade
+UpgradeService o--> UpgradeCallback
+UpgradeService ..> UpgradeDialog
+UpgradeService ..> OnUpgradeDialogClickListener
+UpgradeService ..> OnUpgradeListener
+JobServiceImp *--> Download
+UpgradeDialog o--> AppUpgradeInfo
+UpgradeDialog o--> OnUpgradeDialogClickListener
+UpgradImp..|> Upgrade
+UpgradImp *--> Download
+UpgradImp *--> Install
+UpgradImp o--> AppUpgradeInfo
+UpgradImp ..> OnDownloadListener
+DownloadImp ..|> Download
+DownloadImp ..>OnDownloadListener
+InstallImp ..|> Install
+@enduml

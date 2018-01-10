@@ -9,7 +9,7 @@ package com.macheng.component.appupgrade;
 public interface UpgradeCallback {
     /**
      * 主线程中执行
-     * @param success 没有新版本时success为true，检查是否有更新、下载apk等步骤中任何一处失败返回false
+     * @param success 没有新版本时success为true，检查更新、下载apk失败时返回false
      */
     void afterUpgrade(boolean success);
 
