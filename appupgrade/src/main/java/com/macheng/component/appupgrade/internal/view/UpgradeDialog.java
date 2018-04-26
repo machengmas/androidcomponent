@@ -74,7 +74,7 @@ public class UpgradeDialog extends Dialog {
         });
     }
     public UpgradeDialog(@NonNull Activity context,AppUpgradeInfo appUpgradeInfo) {
-        super(context);
+        super(context,R.style.Theme_AppCompat_Dialog);
         this.context = context;
         this.appUpgradeInfo = appUpgradeInfo;
     }
