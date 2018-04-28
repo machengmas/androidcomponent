@@ -6,6 +6,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.support.v4.content.FileProvider;
 
 import java.io.File;
 
@@ -120,10 +121,14 @@ public class ApkUtils {
      */
     public static void installApk(Context context,File file){
         Intent install = new Intent(Intent.ACTION_VIEW);
-        Uri uri = Uri.fromFile(file);
+        Uri uri =
+                FileProvider.getUriForFile(context,"com.macheng.component.fileprovider", file);
+
         install.setDataAndType(uri, "application/vnd.android.package-archive");
         install.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        install.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         context.startActivity(install);
+
     }
 
     /**

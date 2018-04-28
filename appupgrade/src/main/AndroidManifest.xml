@@ -15,6 +15,16 @@
             android:permission="android.permission.BIND_JOB_SERVICE">
         </service>
         <service android:name=".internal.service.UpgradeService"></service>
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.macheng.component.fileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <!--元数据-->
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>
