@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void appupgradeDemo(){
-        String checkUpgradeUrl="http://172.16.33.241:18080/app/appUpgrade.do?action=getLatestAppVersion";
+        String checkUpgradeUrl="";
         new AppUpgradeExecutor(this, new UpgradeCallback() {
             @Override
             public void afterUpgrade(boolean success) {
